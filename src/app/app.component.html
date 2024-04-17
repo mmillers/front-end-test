@@ -1,0 +1,10 @@
+<div class="app-container">
+  <div class="app-row">
+    <div *ngFor="let rota of routes" [routerLink]="rota.path" class="route">
+      {{ rota.path }}
+    </div>
+  </div>
+  <div class="router-outlet-main-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

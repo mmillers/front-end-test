@@ -1,0 +1,22 @@
+.wrapper {
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  border: 1px solid blue;
+  justify-content: center;
+
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    align-self: center;
+
+    /**
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    */
+  }
+}

@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+body,
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(241, 241, 241);
+  color: rgb(33, 33, 33);
+}
+
+:root {
+  --grid-template-column: repeat(4, 250px);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
+app-root {
+  height: 100%;
+}
+router-outlet {
+  height: 0 !important;
+}
+
+.router-outlet-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+
+  & > * {
+    display: flex;
+    height: 100%;
+  }
+}
+
+.objetivos {
+  max-width: 600px;
+}
+
+@media only screen and (max-width: 1000px) {
+  :root {
+    --grid-template-column: 1fr;
+  }
+}
