@@ -38,16 +38,18 @@ export class CrudComponent implements OnInit, OnDestroy {
   filtrar(arg: string) {
     console.log("filtrando..."); //não remover essa linha
     const filterResult = this.dataSource.reduce((result: Pessoa[], data: Pessoa) => {
-      if (
-        data.email.includes(arg) ||
-        data.cep.includes(arg) ||
-        data.nome.includes(arg)
-      ) {
+      if (this.filterByFields(data, arg)) {
         result.push(data);
       }
       return result;
     }, []);
     this.dataSource = [...filterResult];
+  }
+
+  private filterByFields(data: Pessoa, arg: string): boolean {
+    return (data.email.includes(arg) ||
+      data.cep.includes(arg) ||
+      data.nome.includes(arg));
   }
 
   adicionar() {
@@ -56,8 +58,10 @@ export class CrudComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe(
         (formValues: Pessoa) => {
-          this.dataSource = [...this.dataSource, formValues];
-          this.dataSourceAux = this.dataSource;
+          if (formValues) {
+            this.dataSource = [...this.dataSource, formValues];
+            this.dataSourceAux = this.dataSource;
+          }
         });
   }
 
